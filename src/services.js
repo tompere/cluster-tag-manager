@@ -16,6 +16,6 @@ export const fetchClusters = () => {
 };
 
 export const tagPostWithCluster = (postId, clusterId) => {
-  // TODO(niv) - fetch clusters options from server
+  // TODO(niv) - update posts with selected cluster
   console.log(`🦄 tag post ${postId} with cluster ${clusterId}`);
 };
