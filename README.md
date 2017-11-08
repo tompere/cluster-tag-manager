@@ -10,4 +10,4 @@ download [node.js (with npm)](https://nodejs.org/en/download/)
 `npm run build` (output to `/build` dir)
 
 ### deploy
-🔥 only with [firebase hosting](https://firebase.google.com/docs/hosting/quickstart) 
+🔥 use [firebase hosting](/FULL_DOCS.md#firebase) 
