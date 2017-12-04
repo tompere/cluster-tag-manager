@@ -1,18 +1,25 @@
 export const fetchPosts = () => {
   // TODO(niv) - fetch posts from server
-  return [
-    { id: 1, company: "golan telecom", description: "no reception" },
-    { id: 2, company: "shufersal", description: "rotten tomatoes" }
-  ];
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      resolve([
+        { id: 1, company: "golan telecom", description: "no reception" },
+        { id: 2, company: "shufersal", description: "rotten tomatoes" }
+      ]);
+    }, 1500)
+  );
 };
 
 export const fetchClusters = () => {
-  // TODO(niv) - fetch clusters options from server
-  return [
-    { id: 1, name: "telecommunications" },
-    { id: 2, name: "food" },
-    { id: 3, name: "insurance" }
-  ];
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      resolve([
+        { id: 1, name: "telecommunications" },
+        { id: 2, name: "food" },
+        { id: 3, name: "insurance" }
+      ]);
+    }, 1500)
+  );
 };
 
 export const tagPostWithCluster = (postId, clusterId) => {

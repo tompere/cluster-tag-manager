@@ -3,9 +3,9 @@ import "./App.css";
 
 import { fetchPosts, fetchClusters, tagPostWithCluster } from "./services";
 
-const Body = () => (
+const Body = ({ posts = [], clusters = [] }) => (
   <div className="App-intro">
-    {fetchPosts().map(post => (
+    {posts.map(post => (
       <div className="post" key={post.id}>
         <div>
           {`${post.id} - ${post.company}`} <pre>"{post.description}"</pre>
@@ -19,7 +19,7 @@ const Body = () => (
               {" "}
               -- select an option --{" "}
             </option>
-            {fetchClusters().map(cluster => (
+            {clusters.map(cluster => (
               <option value={cluster.id} key={cluster.id}>
                 {cluster.name}
               </option>
@@ -32,13 +32,27 @@ const Body = () => (
 );
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      clusters: []
+    };
+  }
+
+  componentDidMount() {
+    Promise.all([fetchPosts(), fetchClusters()]).then(([posts, clusters]) => {
+      this.setState({ posts, clusters }, console.log("!!!"));
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Cluster tag manager</h1>
         </header>
-        <Body />
+        <Body posts={this.state.posts} clusters={this.state.clusters} />
       </div>
     );
   }
